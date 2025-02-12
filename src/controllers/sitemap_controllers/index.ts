@@ -1,0 +1,1 @@
+export { sitemap_get } from './sitemap_get';
