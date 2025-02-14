@@ -35,7 +35,7 @@ if (
 }
 
 app.use(cors({
-  origin: NODE_ENV === 'production' ? 'kenuz-admin.netlify.app' : 'http://localhost:5173',
+  origin: NODE_ENV === 'production' ? 'https://kenuz-admin.netlify.app' : 'http://localhost:5173',
   credentials: true,
 }));
 
