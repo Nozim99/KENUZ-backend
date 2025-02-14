@@ -7,7 +7,7 @@ import { NODE_ENV, SUPER_ADMIN_PASSWORD, SUPER_ADMIN_USERNAME } from '../../util
 
 const cookie_options: CookieOptions = {
   httpOnly: true,
-  secure: NODE_ENV === 'production',
+  // secure: NODE_ENV === 'production',
   sameSite: 'lax',
   maxAge: 4 * 7 * 24 * 60 * 60 * 1000,  // 30 day
 };
