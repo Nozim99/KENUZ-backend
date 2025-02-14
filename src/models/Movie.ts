@@ -18,6 +18,8 @@ export interface IMovie extends Document {
   year?: number,
   genre?: [string],
   age_limit?: number,
+  user: string,
+  views: number,
   createdAt: Date;
   updatedAt: Date;
 }
@@ -43,6 +45,11 @@ const MovieSchema: Schema<IMovie> = new Schema({
     type: String,
     enum: ['movie', 'series'],
     required: true,
+  },
+  user: String,
+  views: {
+    type: Number,
+    default: 0,
   },
   video_url: String,
   // episodes: [{

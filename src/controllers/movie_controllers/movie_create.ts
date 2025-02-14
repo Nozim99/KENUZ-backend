@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import Movie, { IMovie } from '../../models/Movie';
 import { upload_image } from '../../services/cloudinary_services';
+import { AuthRequest } from '../../middlewares/authMiddleware';
 
 interface IData {
   title: string;
@@ -17,7 +18,7 @@ interface IData {
 }
 
 
-export const movie_create = async (req: Request, res: Response): Promise<void> => {
+export const movie_create = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
     const image = req.file;
 
@@ -50,6 +51,7 @@ export const movie_create = async (req: Request, res: Response): Promise<void> =
     const image_result = await upload_image(image.path);
 
     const new_movie: IMovie = new Movie({
+      user: req.user?.userId,
       title,
       description,
       keywords,

@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import Movie, { IMovie } from '../../models/Movie';
 import Episode, { IEpisode } from '../../models/Episode';
+import { AuthRequest } from '../../middlewares/authMiddleware';
 
 interface IData {
   series_title: string;
@@ -13,7 +14,7 @@ interface IData {
 }
 
 
-export const episode_create = async (req: Request, res: Response): Promise<void> => {
+export const episode_create = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
     const {
       title,
