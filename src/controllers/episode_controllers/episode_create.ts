@@ -47,6 +47,7 @@ export const episode_create = async (req: AuthRequest, res: Response): Promise<v
     }
 
     const new_episode: IEpisode = new Episode({
+      user: req.user?.userId,
       title,
       series: series_title,
       description,
