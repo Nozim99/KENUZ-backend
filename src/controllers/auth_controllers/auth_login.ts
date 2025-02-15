@@ -38,7 +38,7 @@ export const auth_login = async (req: Request, res: Response) => {
         res
           .cookie('token', token, cookie_options)
           .cookie('role', UserRole.SUPER_ADMIN, { ...cookie_options, httpOnly: false })
-          .json({ message: 'Successfully logged' });
+          .json({ message: 'Successfully logged', token, role: UserRole.SUPER_ADMIN });
 
         return;
       }
@@ -49,7 +49,7 @@ export const auth_login = async (req: Request, res: Response) => {
       res
         .cookie('token', token, cookie_options)
         .cookie('role', UserRole.SUPER_ADMIN, { ...cookie_options, httpOnly: false })
-        .json({ message: 'Successfully logged' });
+        .json({ message: 'Successfully logged', token, role: UserRole.SUPER_ADMIN });
       return;
     }
 
@@ -72,7 +72,7 @@ export const auth_login = async (req: Request, res: Response) => {
     res
       .cookie('token', token, cookie_options)
       .cookie('role', user.status, { ...cookie_options, httpOnly: false })
-      .json({ message: 'Authenticated successfully' });
+      .json({ message: 'Authenticated successfully', token, role: user.status });
 
   } catch (error) {
     res.status(500).json({ message: 'Internal server error' });
