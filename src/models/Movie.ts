@@ -19,6 +19,7 @@ export interface IMovie extends Document {
   genre?: [string],
   age_limit?: number,
   user: string,
+  dubbing_artist?: string,
   views: number,
   createdAt: Date;
   updatedAt: Date;
@@ -51,11 +52,8 @@ const MovieSchema: Schema<IMovie> = new Schema({
     type: Number,
     default: 0,
   },
+  dubbing_artist: String,
   video_url: String,
-  // episodes: [{
-  //   type: Schema.Types.ObjectId,
-  //   ref: 'Episode',
-  // }],
   country: String,
   language: String,
   year: Number,

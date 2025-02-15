@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import Episode from '../../models/Episode';
+import Episode, { IEpisode } from '../../models/Episode';
 import Movie from '../../models/Movie';
 
 export const episode_get = async (req: Request, res: Response) => {
@@ -18,7 +18,7 @@ export const episode_get = async (req: Request, res: Response) => {
       return;
     }
 
-    const episode = await Episode.findOne({ series: title, episode_number: episode_number });
+    const episode: IEpisode | null = await Episode.findOne({ series: title, episode_number: episode_number });
     const series = await Movie.findOne({ title });
 
     const total_episode = await Episode.countDocuments({ series: title });
@@ -42,6 +42,8 @@ export const episode_get = async (req: Request, res: Response) => {
         total_episode,
       },
     });
+
+    await Episode.findByIdAndUpdate(episode._id, { $inc: { views: 1 } });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: `Internal error` });
