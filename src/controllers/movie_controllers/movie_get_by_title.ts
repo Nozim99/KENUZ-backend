@@ -6,6 +6,7 @@ import Episode from '../../models/Episode';
 export const movie_get_by_title = async (req: Request, res: Response) => {
   try {
     const title = req.params.title as string;
+    const do_inc_views = req.query.inc_views === 'true';
 
     if (!title) {
       res.status(400).json({ message: 'Title parameter is required' });
@@ -31,7 +32,7 @@ export const movie_get_by_title = async (req: Request, res: Response) => {
       total_episodes,
     });
 
-    await Movie.findByIdAndUpdate(movie._id, { $inc: { views: 1 } });
+    if (do_inc_views) await Movie.findByIdAndUpdate(movie._id, { $inc: { views: 1 } });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: `Internal error` });

@@ -7,6 +7,7 @@ export const episode_get = async (req: Request, res: Response) => {
   try {
     const title = req.params.title as string;
     const episode_number: number = +req.params.episode_number;
+    const do_inc_views = req.query.inc_views === 'true';
 
     if (!episode_number) {
       res.status(400).send({ message: 'Episode Number parameter is required' });
@@ -43,7 +44,7 @@ export const episode_get = async (req: Request, res: Response) => {
       },
     });
 
-    await Episode.findByIdAndUpdate(episode._id, { $inc: { views: 1 } });
+    if (do_inc_views) await Episode.findByIdAndUpdate(episode._id, { $inc: { views: 1 } });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: `Internal error` });
