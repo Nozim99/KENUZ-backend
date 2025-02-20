@@ -36,7 +36,7 @@ if (
 
 app.use(cors({
   origin: NODE_ENV === 'production'
-    ? ['https://kenuz-admin.netlify.app', "https://kenuz.mezes.uz"]
+    ? ['https://kenuz-admin.netlify.app', "https://kenuz.uz"]
     : ['http://localhost:5173', "http://localhost:3000"],
   credentials: true,
 }));
