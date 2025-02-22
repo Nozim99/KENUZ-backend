@@ -54,8 +54,14 @@ const MovieSchema: Schema<IMovie> = new Schema({
   },
   dubbing_artist: String,
   video_url: String,
-  country: String,
-  language: String,
+  country: {
+    type: String,
+    default: 'Yaponiya',
+  },
+  language: {
+    type: String,
+    default: 'O\'zbek tilida',
+  },
   year: Number,
   genre: [String],
   age_limit: Number,
