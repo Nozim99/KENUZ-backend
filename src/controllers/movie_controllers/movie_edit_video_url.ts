@@ -21,12 +21,6 @@ export const movie_edit_video_url = async (req: AuthRequest, res: Response): Pro
       return;
     }
 
-    const same_movie = await Movie.findOne({ title });
-    if (same_movie) {
-      res.status(400).json({ message: 'Bu title takrorlangan' });
-      return;
-    }
-
     const movie: IMovie | null = await Movie.findOne({ title });
 
     if (!movie) {

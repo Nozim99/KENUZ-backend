@@ -12,11 +12,6 @@ const movie_edit_video_url = async (req, res) => {
             res.status(400).json({ message: 'invalid data' });
             return;
         }
-        const same_movie = await Movie_1.default.findOne({ title });
-        if (same_movie) {
-            res.status(400).json({ message: 'Bu title takrorlangan' });
-            return;
-        }
         const movie = await Movie_1.default.findOne({ title });
         if (!movie) {
             res.status(400).json({ message: 'Movie not found' });
