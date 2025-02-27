@@ -23,6 +23,7 @@ export interface IMovie extends Document {
   views: number,
   createdAt: Date;
   updatedAt: Date;
+  _id: Schema.Types.ObjectId;
 }
 
 

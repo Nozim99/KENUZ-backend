@@ -13,4 +13,5 @@ router.get('/', movie_controllers_1.movie_get);
 router.get('/by_title/:title', movie_controllers_1.movie_get_by_title);
 router.get('/search', movie_search_1.movie_search);
 router.post('/create', authMiddleware_1.authMiddleware, multerConfig_1.default.single('image'), movie_controllers_1.movie_create);
+router.put('/edit/video', authMiddleware_1.authMiddleware, movie_controllers_1.movie_edit_video_url);
 exports.default = router;

@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
 import Movie, { IMovie } from '../../models/Movie';
 import { upload_image } from '../../services/cloudinary_services';
 import { AuthRequest } from '../../middlewares/authMiddleware';
